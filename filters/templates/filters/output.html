@@ -26,11 +26,11 @@
 			  </nav>
 		</header>
 		<main class="container mainoutput">
-            <img class="outputimg" src="{% static 'filters/output.jpg' %}" alt="output file">
+            <img class="outputimg" src="data:image/png;base64,{{ output | safe }}" alt="output file">
 			<div style="margin-top: 10px;">
-				<a href="{% static 'filters/output.jpg' %}" download="output.jpg" class="btn btn-dark" style="margin-right: 5px;">Download</a>
 				<a href="/" class="btn btn-dark" style="margin-left: 5px;">Try again</a>
 			</div>
+			<img src="">
 		</main>
 
 		<footer>

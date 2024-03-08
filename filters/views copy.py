@@ -5,7 +5,6 @@ from django.core.files.storage import default_storage
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import io
-import base64
 
 
 # Create your views here.
@@ -17,11 +16,9 @@ def index(request):
             return 'No file'
         imgSaved = default_storage.save('./filters/static/filters/input.jpg', input_file)
 
-
         # Get filter & image
         filter = request.POST["filter"]
         img = Image.open('./filters/static/filters/input.jpg')
-        
                     
         # Obtain RGB data for input file
         width, height = img.size
@@ -92,15 +89,10 @@ def index(request):
                     new.putpixel((x, y), value)
         
         # Save output file & Delete input file
-        bufferOutput = io.BytesIO()
-        new.save(bufferOutput, 'PNG')
-        PNG = bufferOutput.getvalue()
-        output = base64.b64encode(PNG).decode("utf-8")
-        #new.save('./filters/static/filters/output.jpg')
+        # output = default_storage.save('./filters/static/filters/output.jpg', new)
+        new.save('./filters/static/filters/output.jpg')
         os.remove('./filters/static/filters/input.jpg')
-        return render(request, "filters/output.html", {
-            "output": output
-        })
+        return render(request, "filters/output.html")
     
     return render(request, "filters/index.html")
 
