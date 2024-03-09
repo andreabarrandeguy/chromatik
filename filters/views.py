@@ -2,11 +2,8 @@ import os
 from django.shortcuts import render
 from PIL import Image
 from django.core.files.storage import default_storage
-from django.conf import settings
-from django.core.files.storage import FileSystemStorage
 import io
 import base64
-
 
 # Create your views here.
 def index(request):
@@ -20,17 +17,20 @@ def index(request):
 
         # Get filter & image
         filter = request.POST["filter"]
-        img = Image.open('./filters/static/filters/input.jpg')
+        ogimg = Image.open('./filters/static/filters/input.jpg')
         
-                    
-        # Obtain RGB data for input file
+        # Resize original image for process performance
+        ogwidth, ogheight = ogimg.size
+        newsize = (int((ogwidth/ogheight)*500), 500)
+        img = ogimg.resize(newsize)
         width, height = img.size
+
+        # Obtain RGB data for input file
         rgb_map = img.convert('RGB')
         new = Image.new("RGB", (width, height))
         
-        # Apply filter
+        # Apply filter - PURPLE
         if filter == "purple":
-            # Apply filter
             for y in range(height):
                 for x in range(width):
                     # Get pixel RGB data
@@ -57,11 +57,12 @@ def index(request):
                     #     b = og_red
                     #     r = og_blue
 
+                    # Nuevo valor del pixel y lo guarda
                     value = (r,g,b)
                     new.putpixel((x, y), value)
         
+        # Apply filter - TURQUOISE
         if filter == "turquoise":
-            # Apply filter
             for y in range(height):
                 for x in range(width):
                     # Get pixel RGB data
@@ -88,15 +89,16 @@ def index(request):
                         b = og_red
                         r = og_blue
 
+                    # Nuevo valor del pixel y lo guarda
                     value = (r,g,b)
                     new.putpixel((x, y), value)
         
+
         # Save output file & Delete input file
         bufferOutput = io.BytesIO()
         new.save(bufferOutput, 'PNG')
         PNG = bufferOutput.getvalue()
         output = base64.b64encode(PNG).decode("utf-8")
-        #new.save('./filters/static/filters/output.jpg')
         os.remove('./filters/static/filters/input.jpg')
         return render(request, "filters/output.html", {
             "output": output
