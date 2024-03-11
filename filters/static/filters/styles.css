@@ -1,6 +1,5 @@
 header {
-  height: 8dvh;
-  display: flex;
+  height: 5dvh;
 }
 
 .titulo {
@@ -16,7 +15,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 92dvh;
+  height: 95dvh;
   background-image: url('./1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -62,23 +61,13 @@ form {
   }
 }
 
-.spinner {
-  border: 10px solid rgba(0, 0, 0, 0.8);
-  width: 100px;
-  height: 100px;
-  animation: spin 1s linear infinite;
-  position: fixed;
-  display: none;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.bodyabout {
+.mainabout {
   width: 100%;
-  height: 100%;
+  height: 95dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: white;
   background-image: url('./5.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -90,14 +79,8 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  height: 95dvh;
   justify-content: space-evenly;
-}
-
-.outputimg {
-  height: 80vh;
-  border: 1px black dashed;
-  border-radius: 1%;
 }
 
 .outputimgV {
@@ -116,21 +99,6 @@ form {
   font-weight: 700;
 }
 
-.mainabout {
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-  width: 70vw;
-  justify-content: space-evenly;
-  margin-left: 5vw;
-  color: white;
-}
-
-@media screen and (min-width: 992px) {
-  .about {
-    margin-left: 70vw;
-  }
-}
 
 @media screen and (max-width: 767px) {
   .filterimg {
@@ -149,7 +117,7 @@ form {
   }
 }
 
-@media screen and (max-width: 816px) {
+@media screen and (max-width: 1287px) {
   .outputimgH {
     width: 90vw;
     height: auto;
