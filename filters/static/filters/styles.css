@@ -1,5 +1,6 @@
 header {
   height: 8dvh;
+  display: flex;
 }
 
 .titulo {
@@ -99,6 +100,18 @@ form {
   border-radius: 1%;
 }
 
+.outputimgV {
+  height: 80vh;
+  border: 1px black dashed;
+  border-radius: 1%;
+}
+
+.outputimgH {
+  height: 80vh;
+  border: 1px black dashed;
+  border-radius: 1%;
+}
+
 .negrita {
   font-weight: 700;
 }
@@ -126,5 +139,19 @@ form {
     border: 2px white solid;
     margin: 5px;
     margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 367px) {
+  .outputimgV {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 816px) {
+  .outputimgH {
+    width: 90vw;
+    height: auto;
   }
 }

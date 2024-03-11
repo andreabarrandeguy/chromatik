@@ -141,9 +141,15 @@ def index(request):
         PNG = bufferOutput.getvalue()
         output = base64.b64encode(PNG).decode("utf-8")
         os.remove('./filters/static/filters/input.jpg')
-        return render(request, "filters/output.html", {
-            "output": output
-        })
+
+        if (width > height):
+            return render(request, "filters/outputh.html", {
+                "output": output
+            })
+        if (height > width):
+            return render(request, "filters/outputv.html", {
+                "output": output
+            })
     
     return render(request, "filters/index.html")
 
@@ -152,8 +158,9 @@ def index(request):
 def about(request):
     return render(request, "filters/about.html")
 
-def output(request):
-    return render(request, "filters/output.html")
 
-def test(request):
-    return render(request, "filters/index2.html")
+def outputh(request):
+    return render(request, "filters/outputh.html")
+
+def outputv(request):
+    return render(request, "filters/outputv.html")
