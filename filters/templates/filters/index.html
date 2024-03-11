@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/858b52eeaa.js" crossorigin="anonymous"></script>
     <link href="{% static 'filters/styles.css' %}" rel="stylesheet">
     <script src="{% static 'filters/index.js' %}"></script>
     <title>Chromatik</title>
@@ -19,7 +20,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-white">
             <div class="container-fluid">
-                <a class="navbar-brand mb-0 h1" href="#">Chromatik</a>
+                <a class="navbar-brand mb-0 h1" href="{% url 'index' %}">Chromatik</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -35,31 +36,37 @@
     </header>
 
     <main class="section-top">
-        <div class="container">
-            <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input class="form-control form-control-lg" type="file" name="input_file" accept="image/*" required
-                    style="width: 50vw;">
+        <div style="display: flex; flex-direction: column;">
+            <h1 class="titulo">Chromatik</h1>
+            <div class="container">
+                <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h2>Upload a photo to start <i class="fa-solid fa-circle-down"></i></h2>
+                    <input class="form-control form-control-lg" type="file" name="input_file" accept="image/*" required
+                        style="margin-top: 20px; margin-bottom: 20px; width: 50vw;">
 
-                <!--Images-->
-                <div id="spinner" class="spinner"></div>
-                <div>
-                    <h2 class="text-center">Select Chromatik filter</h2>
-                    <div class="container-fluid text-center">
-                        <input class="filterimg" type="image" value="purple" src="{% static 'filters/purple.jpg' %}"
-                            onclick="applyFilter('purple')">
-                        <input class="filterimg" type="image" value="turquoise"
-                            src="{% static 'filters/turquesa.png' %}" onclick="applyFilter('turquoise')">
-                        <input type="hidden" name="filter" id="filter" value="">
+                    <!--Images-->
+                    <div id="spinner" class="spinner"></div>
+                    <div>
+                        <h2 class="text-center" style="margin-top: 30px; margin-bottom: 15px;">Select a filter to continue</h2>
+                        <div class="container-fluid text-center">
+
+                            <input class="filterimg" type="image" value="purple" src="{% static 'filters/purple.jpg' %}"
+                                onclick="applyFilter('purple')">
+
+                            <input class="filterimg" type="image" value="turquoise"
+                                src="{% static 'filters/turquesa.png' %}" onclick="applyFilter('turquoise')">
+
+                            <input class="filterimg" type="image" value="red" src="{% static 'filters/red.png' %}"
+                                onclick="applyFilter('red')">
+
+                            <input type="hidden" name="filter" id="filter" value="">
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </main>
-
-    <footer>
-
-    </footer>
 </body>
 
 </html>

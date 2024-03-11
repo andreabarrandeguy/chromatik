@@ -99,6 +99,40 @@ def index(request):
                     # Nuevo valor del pixel y lo guarda
                     value = (r,g,b)
                     new.putpixel((x, y), value)
+
+
+        # Apply filter - RED
+        if filter == "red":
+            for y in range(height):
+                for x in range(width):
+                    # Get pixel RGB data
+                    [r,g,b] = rgb_map.getpixel((x, y))
+                    og_red = r
+                    og_green = g
+                    og_blue = b
+
+                    # Si el azul es mayoritario, desaturar
+                    if ((og_blue > og_green) and (og_blue > og_red)) and (og_green > og_red):
+                        r = og_green
+                    if ((og_blue > og_green) and (og_blue > og_red)) and (og_red > og_green):
+                        g = og_red
+                    #if (og_blue > og_green) and (og_blue > og_red):
+                    #    r = 150
+
+                    # Si el verde es mayoritario, desaturar
+                    if ((og_green > og_blue) and (og_green > og_red)) and (og_blue > og_red):
+                        r = og_blue
+                    if ((og_green > og_blue) and (og_green > og_red)) and (og_red > og_blue):
+                        b = og_red
+
+                    # Si el rojo es mayoritario, saturar
+                    if (og_red > og_green) and (og_red > og_blue):
+                        g = og_blue
+                    
+
+                    # Nuevo valor del pixel y lo guarda
+                    value = (r,g,b)
+                    new.putpixel((x, y), value)
         
 
         # Save output file & Delete input file
@@ -120,3 +154,6 @@ def about(request):
 
 def output(request):
     return render(request, "filters/output.html")
+
+def test(request):
+    return render(request, "filters/index2.html")
