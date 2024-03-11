@@ -14,10 +14,10 @@ def index(request):
             return 'No file'
         imgSaved = default_storage.save('./filters/static/filters/input.jpg', input_file)
 
-
         # Get filter & image
         filter = request.POST["filter"]
         ogimg = Image.open('./filters/static/filters/input.jpg')
+        #img = Image.open('./filters/static/filters/input.jpg')
         
         # Resize original image for process performance
         ogwidth, ogheight = ogimg.size
@@ -39,27 +39,34 @@ def index(request):
                     og_green = g
                     og_blue = b
 
-                    # Si el azul es mayoritario
-                    if ((og_blue > og_green) and (og_blue > og_red)) or (og_blue+50 > og_green):
-                        # Cambiar los azules a naranjas
+                    # Si el azul es mayoritario, Cambiar los azules a celestes
+                    if ((og_blue >= og_green) and (og_blue >= og_red)):
                         b = og_green
                         g = og_blue
 
-                    # Si el verde es mayoritario
+                    # Si el verde es mayoritario, Cambiar los verdes a purpuras/rosas
                     elif (og_green > og_blue) and (og_green > og_red):
-                        # Cambiar los verdes a azules
                         r = og_green
-                        g = og_red
+                        g = og_blue
+                        b = og_green
 
-                    # Si el rojo es mayoritario
-                    #elif (og_red > og_blue) and (og_red > og_green):
-                        # Cambiar los rojos a azules
-                    #     b = og_red
-                    #     r = og_blue
+                    # Si el rojo es mayoritario (solo para marrones/verdes dudosos)
+                    elif (og_red > og_blue) and (og_red >= og_green):
+                        if (100 < og_red < 200) and (100 < og_green < 200):
+                            r = og_green
+                            g = og_blue
+                            b = og_green
+                        # El resto convertirlo a grises
+                        else:
+                            grey = int((og_red + og_green + og_blue) / 3)
+                            r = grey
+                            g = grey
+                            b = grey
 
                     # Nuevo valor del pixel y lo guarda
                     value = (r,g,b)
                     new.putpixel((x, y), value)
+        
         
         # Apply filter - TURQUOISE
         if filter == "turquoise":
