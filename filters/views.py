@@ -142,7 +142,7 @@ def index(request):
         output = base64.b64encode(PNG).decode("utf-8")
         os.remove('./filters/static/filters/input.jpg')
 
-        if (width > height):
+        if (width >= height):
             return render(request, "filters/outputh.html", {
                 "output": output
             })
