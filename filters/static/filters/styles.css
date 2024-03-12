@@ -32,13 +32,23 @@ form {
   justify-content: space-evenly;
 }
 
-
-.filterimg {
-  height: 200px;
-  width: 200px;
-  margin: 10px;
+.imgContainer {
+  display: flex; 
+  flex-direction: column; 
+  width: 210px; 
+  height: 240px; 
+  background-color: white;
   border: 5px white solid;
   border-radius: 10%;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.filterimg {
+  width: 200px;
+  height: 200px;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
 }
 
 .filterimg:hover {
@@ -101,12 +111,20 @@ form {
 
 
 @media screen and (max-width: 767px) {
+  .imgContainer {
+    width: 110px;
+    height: 160px;
+    margin-top: 20px;
+    border: 2px white solid;
+    margin: 5px; 
+    align-items: center;
+  }
   .filterimg {
     height: 100px;
     width: 100px;
-    border: 2px white solid;
-    margin: 5px;
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;  
   }
 }
 

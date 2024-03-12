@@ -16,16 +16,24 @@
                 <div>
                     <h2 class="text-center" style="margin-top: 30px; margin-bottom: 15px;">Select a filter to continue
                     </h2>
-                    <div class="container-fluid text-center">
+                    <div class="container-fluid text-center" style="display: flex;">
+                        <div class="imgContainer">
+                            <input class="filterimg" type="image" value="purple" src="{% static 'filters/purple.jpg' %}"
+                                onclick="applyFilter('purple')">
+                            <p class="negrita" style="margin: 0;">For greens and blues</p>
+                        </div>
 
-                        <input class="filterimg" type="image" value="purple" src="{% static 'filters/purple.jpg' %}"
-                            onclick="applyFilter('purple')">
-
-                        <input class="filterimg" type="image" value="turquoise"
+                        <div class="imgContainer">
+                            <input class="filterimg" type="image" value="turquoise"
                             src="{% static 'filters/turquesa.png' %}" onclick="applyFilter('turquoise')">
+                            <p class="negrita" style="margin: 0;">For warms and blues</p>
+                        </div>
 
-                        <input class="filterimg" type="image" value="red" src="{% static 'filters/red.png' %}"
+                        <div class="imgContainer">
+                            <input class="filterimg" type="image" value="red" src="{% static 'filters/red.png' %}"
                             onclick="applyFilter('red')">
+                            <p class="negrita" style="margin: 0;">For red and blues</p>
+                        </div>
 
                         <input type="hidden" name="filter" id="filter" value="">
                     </div>
