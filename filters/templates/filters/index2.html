@@ -1,0 +1,46 @@
+{% extends "filters/layout.html" %}
+{% load static %}
+
+{% block main %}
+<main class="section-top">
+    <div style="display: flex; flex-direction: column;">
+        <h1 class="titulo">Chromatik</h1>
+        <div class="container">
+            <form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2>Upload a photo to start <i class="fa-solid fa-circle-down"></i></h2>
+                <input class="form-control form-control-lg" type="file" name="input_file" accept="image/*" required
+                    style="margin-top: 20px; margin-bottom: 20px; width: 50vw;">
+
+                <!--Images-->
+                <div>
+                    <h2 class="text-center" style="margin-top: 30px; margin-bottom: 15px;">Select a filter to continue
+                    </h2>
+                    <div class="container-fluid text-center" style="display: flex;">
+                        <div class="imgContainer">
+                            <input class="filterimg" type="image" value="purple" src="{% static 'filters/purple.jpg' %}"
+                                onclick="applyFilter('purple')">
+                            <p class="negrita" style="margin: 0;">For greens and blues</p>
+                        </div>
+
+                        <div class="imgContainer">
+                            <input class="filterimg" type="image" value="turquoise"
+                            src="{% static 'filters/turquesa.png' %}" onclick="applyFilter('turquoise')">
+                            <p class="negrita" style="margin: 0;">For warms and blues</p>
+                        </div>
+
+                        <div class="imgContainer">
+                            <input class="filterimg" type="image" value="red" src="{% static 'filters/red.png' %}"
+                            onclick="applyFilter('red')">
+                            <p class="negrita" style="margin: 0;">For reds and blues</p>
+                        </div>
+
+                        <input type="hidden" name="filter" id="filter" value="">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
