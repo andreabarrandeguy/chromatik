@@ -14,7 +14,7 @@
 
                 <!--Images-->
                 <div>
-                    <h2 class="text-center" style="margin-top: 30px; margin-bottom: 15px;">Select a filter to continue
+                    <h2 class="text-center" style="margin-top: 20px; margin-bottom: 10px;">Select a filter to continue
                     </h2>
                     <div class="container-fluid text-center" style="display: flex;">
                         <div class="imgContainer">
@@ -25,13 +25,13 @@
 
                         <div class="imgContainer">
                             <input class="filterimg" type="image" value="turquoise"
-                            src="{% static 'filters/turquesa.png' %}" onclick="applyFilter('turquoise')">
+                                src="{% static 'filters/turquesa.png' %}" onclick="applyFilter('turquoise')">
                             <p class="negrita" style="margin: 0;">For warms and blues</p>
                         </div>
 
                         <div class="imgContainer">
                             <input class="filterimg" type="image" value="red" src="{% static 'filters/red.png' %}"
-                            onclick="applyFilter('red')">
+                                onclick="applyFilter('red')">
                             <p class="negrita" style="margin: 0;">For reds and blues</p>
                         </div>
 
@@ -39,6 +39,7 @@
                     </div>
                 </div>
             </form>
+            <a href="{% url 'filters' %}" class="link-dark"><p style="text-align: center; margin-top: 5px;">How do the filters work?</p></a>
         </div>
     </div>
 </main>

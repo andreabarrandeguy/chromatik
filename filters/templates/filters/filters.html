@@ -1,0 +1,39 @@
+{% extends "filters/layout.html" %}
+{% load static %}
+
+{% block main %}
+<main>
+    <div class="tarjetas" style="display: flex;">
+        <div class="card" style="width: 18rem; margin: 5px;">
+            <img src="{% static 'filters/og2purple.png' %}" class="card-img-top" alt="Original to Purple filter">
+            <div class="card-body">
+                <h5 class="card-title">Purple</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 5px;">
+            <img src="{% static 'filters/og2turq.png' %}" class="card-img-top" alt="Original to Turquoise filter">
+            <div class="card-body">
+                <h5 class="card-title">Turquoise</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem; margin: 5px;">
+            <img src="{% static 'filters/og2red.png' %}" class="card-img-top" alt="Original to Red filter">
+            <div class="card-body">
+                <h5 class="card-title">Red</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

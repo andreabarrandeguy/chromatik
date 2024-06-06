@@ -165,5 +165,5 @@ def outputh(request):
 def outputv(request):
     return render(request, "filters/outputv.html")
 
-def test(request):
-    return render(request, "filters/index2.html")
+def filters(request):
+    return render(request, "filters/filters.html")
