@@ -11,13 +11,13 @@ header {
 }
 
 .navbar-toggler-icon {
-  background-image: none; /* Remove the default background image */
+  background-image: none;
 }
 
 .navbar-toggler-icon::before {
-  content: "\2630"; /* Unicode character for a hamburger icon */
-  font-size: 24px; /* Adjust the size if needed */
-  color: white; /* Set the icon color to white */
+  content: "\2630";
+  font-size: 24px;
+  color: white;
   display: block;
 }
 
@@ -40,7 +40,7 @@ body {
     #ca4d4d,
     #7d7dc5
   );
-  background-size: 600% 600%; /* Larger size for smooth movement */
+  background-size: 600% 600%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientMove 10s linear infinite;
@@ -102,12 +102,48 @@ canvas {
   max-height: 100%;
   border-radius: 10%;
   cursor: pointer;
-  object-fit: contain; /* Ensures the image fits within the container while maintaining aspect ratio */
+  object-fit: contain;
 }
 
 .filterimg:hover {
-  opacity: 0.7;
-  background-color: white;
+  opacity: 0.5;
+  background-color: #0f0f0f;
+}
+
+body.processing {
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0f0f0f;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+  align-content: center;
+  text-align: -webkit-center;
+}
+
+.spinner {
+  border: 8px solid rgba(215, 210, 210, 0.1);
+  border-left: 8px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .mainabout {

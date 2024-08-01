@@ -64,6 +64,9 @@
           </div>
         </div>
       </form>
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+      </div>
     </div>
   </div>
 </main>
@@ -268,6 +271,8 @@
       return;
     }
     document.getElementById("filter").value = filter;
+    document.getElementById("loading").style.display = "block"; // Show loading indicator
+    document.body.classList.add("processing");
     document.getElementById("filterForm").submit();
   }
 </script>
