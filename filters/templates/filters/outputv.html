@@ -1,13 +1,14 @@
-{% extends "filters/layout.html" %}
-{% load static %}
-
-{% block main %}
+{% extends "filters/layout.html" %} {% load static %} {% block main %}
 
 <main class="container mainoutput">
-	<img class="outputimgV" src="data:image/png;base64,{{ output | safe }}" alt="output file">
-	<div style="margin-top: 10px;">
-		<a href="/" class="btn btn-dark" style="margin-left: 5px;">Try again</a>
-	</div>
+  <img
+    class="outputimgV"
+    src="data:image/png;base64,{{ output | safe }}"
+    alt="output file"
+  />
+  <div style="margin-top: 10px">
+    <a href="/" class="btn btn-light" style="margin-left: 5px">Try again</a>
+  </div>
 </main>
 
 {% endblock %}

@@ -2,12 +2,61 @@ header {
   height: 5dvh;
 }
 
+.navNew {
+  background-color: #0f0f0f !important;
+}
+
+.navNew a {
+  color: white !important;
+}
+
+.navbar-toggler-icon {
+  background-image: none; /* Remove the default background image */
+}
+
+.navbar-toggler-icon::before {
+  content: "\2630"; /* Unicode character for a hamburger icon */
+  font-size: 24px; /* Adjust the size if needed */
+  color: white; /* Set the icon color to white */
+  display: block;
+}
+
+body {
+  background-color: #0f0f0f;
+}
+
 .titulo {
   font-size: 4rem;
   height: 20dvh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(
+    to right,
+    #15bc78,
+    #a310a3,
+    #c68825,
+    #5c50de,
+    #ca4d4d,
+    #7d7dc5
+  );
+  background-size: 600% 600%; /* Larger size for smooth movement */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 10s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+h2 {
+  color: white;
 }
 
 .section-top {
@@ -16,14 +65,8 @@ header {
   justify-content: center;
   width: 100%;
   height: 95dvh;
-  background-image: url('./1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  background-position-y: center;
-  animation: slide 20s infinite;
+  background-color: #0f0f0f;
 }
-
 
 form {
   display: flex;
@@ -32,43 +75,39 @@ form {
   justify-content: space-evenly;
 }
 
+canvas {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+}
+
 .imgContainer {
-  display: flex; 
-  flex-direction: column; 
-  width: 210px; 
-  height: 240px; 
+  display: flex;
+  flex-direction: column;
+  width: 210px;
+  height: 210px;
   background-color: white;
   border: 5px white solid;
   border-radius: 10%;
-  justify-content: space-around;
   margin: 10px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .filterimg {
-  width: 200px;
-  height: 200px;
-  border-top-left-radius: 10%;
-  border-top-right-radius: 10%;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10%;
+  cursor: pointer;
+  object-fit: contain; /* Ensures the image fits within the container while maintaining aspect ratio */
 }
 
 .filterimg:hover {
   opacity: 0.7;
   background-color: white;
-}
-
-@keyframes slide {
-  0%{
-    background-image: url('./1.jpg');
-  }
-  25%{
-    background-image: url('./2.jpg');
-  }
-  50%{
-    background-image: url('./3.jpg');
-  }
-  75%{
-    background-image: url('./4.jpg');
-  }
 }
 
 .mainabout {
@@ -78,7 +117,7 @@ form {
   flex-direction: column;
   justify-content: space-evenly;
   color: white;
-  background-image: url('./5.jpg');
+  background-image: url("./5.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
@@ -91,17 +130,18 @@ form {
   align-items: center;
   height: 95dvh;
   justify-content: space-evenly;
+  background-color: #0f0f0f;
 }
 
 .outputimgV {
-  height: 80vh;
-  border: 1px black dashed;
+  height: 500px;
+  border: 1px white dashed;
   border-radius: 1%;
 }
 
 .outputimgH {
-  height: 80vh;
-  border: 1px black dashed;
+  height: 500px;
+  border: 1px white dashed;
   border-radius: 1%;
 }
 
@@ -114,22 +154,19 @@ form {
   margin-top: 30px;
 }
 
-
 @media screen and (max-width: 767px) {
   .imgContainer {
     width: 110px;
-    height: 160px;
+    height: 110px;
     margin-top: 20px;
     border: 2px white solid;
-    margin: 5px; 
+    margin: 5px;
     align-items: center;
   }
   .filterimg {
-    height: 100px;
-    width: 100px;
-    margin-top: 5px;
+    height: auto;
     margin-left: 5px;
-    margin-right: 5px;  
+    margin-right: 5px;
   }
   .tarjetas {
     flex-direction: column;
@@ -145,7 +182,7 @@ form {
 
 @media screen and (max-width: 1287px) {
   .outputimgH {
-    width: 90vw;
+    width: 95vw;
     height: auto;
   }
 }

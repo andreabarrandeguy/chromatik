@@ -21,7 +21,7 @@ def index(request):
         
         # Resize original image for process performance
         ogwidth, ogheight = ogimg.size
-        newsize = (int((ogwidth/ogheight)*500), 500)
+        newsize = (int((ogwidth/ogheight)*1000), 1000)
         img = ogimg.resize(newsize)
         width, height = img.size
 
