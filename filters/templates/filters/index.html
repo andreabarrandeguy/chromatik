@@ -262,6 +262,11 @@
     });
 
   function applyFilter(filter) {
+    const fileInput = document.getElementById("upload");
+    if (!fileInput.files || !fileInput.files.length) {
+      alert("Please upload a photo before selecting a filter.");
+      return;
+    }
     document.getElementById("filter").value = filter;
     document.getElementById("filterForm").submit();
   }
